@@ -37,5 +37,16 @@ public class Main {
         int myTotal = (myMinIntValue / 2);
         byte myNewByteValue = (byte) (myMinByteValue /2);
         short myNewSHortValue = (short) (myMinShortValue / 2);
+
+        byte myChallengeByte = 10;
+        short myChallengeShortVariable = 20;
+        int myChallengeInt = 50;
+        long myChallengeLong = 50000L + 10L * (myChallengeByte + myChallengeInt + myChallengeShortVariable);
+        System.out.println(myChallengeLong);
+
+        short myChallengeShort = (short) (1000 + 10 *
+                (myChallengeByte + myChallengeShortVariable + myChallengeInt));
+        System.out.println((myChallengeShort));
+
     }
 }
