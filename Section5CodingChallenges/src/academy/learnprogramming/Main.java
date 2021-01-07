@@ -10,6 +10,9 @@ public class Main {
         //NumberToWords.numberToWords(125);
         //System.out.println(FlourPacker.canPack(2,2,11));
         //System.out.println(LargestPrime.getLargestPrime(7));
-        DiagonalStar.printSquareStar(7);
+        //DiagonalStar.printSquareStar(7);
+        //System.out.println(ReadingUserInputChallenge.sumReader());
+        //InputCalculator.inputThenPrintSumAndAverage();
+        System.out.println(PaintJob.getBucketCount(3.4, 1.5));
     }
 }
