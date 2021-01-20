@@ -25,5 +25,39 @@ public class Main {
         System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagesPrinted());
         pagesPrinted = printer.printPages(2);
         System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagesPrinted());
+
+        //car challenge
+        Car car = new Car(8, "Base car");
+        System.out.println(car.startEngine());
+        System.out.println(car.accelerate());
+        System.out.println(car.brake());
+
+        Mitsubishi mitsubishi = new Mitsubishi(6, "Outlander VRW 4WD");
+        System.out.println(mitsubishi.startEngine());
+        System.out.println(mitsubishi.accelerate());
+        System.out.println(mitsubishi.brake());
+
+        Ford ford = new Ford(6, "Falcon");
+        System.out.println(ford.startEngine());
+        System.out.println(ford.accelerate());
+        System.out.println(ford.brake());
+
+        //section challenge - bills burgers
+        Hamburger hamburger = new Hamburger("Basic", "white","Sausage",  3.56);
+        hamburger.addHamburgerAddition1("Tomato", 0.27);
+        hamburger.addHamburgerAddition2("Cheese", 0.25);
+        hamburger.addHamburgerAddition3("Lettuce", 0.75);
+        double price = hamburger.itemizedHamburger();
+        System.out.println("Total is " + price);
+
+        HealthyBurger healthyBurger = new HealthyBurger("Bacon", 5.67);
+        healthyBurger.addHamburgerAddition1("egg", .85);
+        healthyBurger.addHealthyAddition1("Lentils", 3.41);
+        double healthyPrice = healthyBurger.itemizedHamburger();
+        System.out.println(healthyPrice);
+        DeluxeBurger db = new DeluxeBurger();
+        db.itemizedHamburger();
+        db.addHamburgerAddition1("this shouldnt work", 0.0);
+
     }
 }
