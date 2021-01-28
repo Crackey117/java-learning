@@ -12,38 +12,65 @@ public class Main {
         //ReverseArray.runReverseArray();
 
         //mobile phone challenge
-        boolean quit = false;
-        startPhone();
-        printActions();
-        while(!quit){
-            System.out.println("Enter action: (6 to show available actions)");
-            int action = scanner.nextInt();
-            scanner.nextLine();
+        //boolean quit = false;
+        //startPhone();
+        //printActions();
+        //while(!quit){
+        //    System.out.println("Enter action: (6 to show available actions)");
+        //    int action = scanner.nextInt();
+        //    scanner.nextLine();
 
-            switch (action) {
-                case 0:
-                    System.out.println("Shutting down");
-                    quit = true;
-                    break;
-                case 1:
-                    mobilePhone.printContacts();
-                    break;
-                case 2:
-                    addNewContact();
-                    break;
-                case 3:
-                    updateContact();
-                    break;
-                case 4:
-                    removeContact();
-                    break;
-                case 5:
-                    queryContact();
-                    break;
-                case 6:
-                    printActions();
-                    break;
-            }
+        //    switch (action) {
+        //        case 0:
+        //            System.out.println("Shutting down");
+        //            quit = true;
+        //            break;
+        //        case 1:
+        //            mobilePhone.printContacts();
+        //            break;
+        //        case 2:
+        //            addNewContact();
+        //            break;
+        //        case 3:
+        //            updateContact();
+        //            break;
+        //        case 4:
+        //            removeContact();
+        //            break;
+        //        case 5:
+        //            queryContact();
+        //            break;
+        //        case 6:
+        //            printActions();
+        //            break;
+        //    }
+        //}
+
+        //banking challenge
+        Bank bank = new Bank("National Aussie Bank");
+        bank.addBranch("Sydney");
+        bank.addCustomer("Sydney", "Mike", 50.05);
+        bank.addCustomer("Sydney", "Jeff", 23.55);
+        bank.addCustomer("Sydney", "Kelly", 78.35);
+        bank.addBranch("Adelaide");
+        bank.addCustomer("Adelaide", "Timmy", 1.02);
+        bank.addCustomerTransaction("Adelaide", "Timmy", 24.13);
+        bank.addCustomerTransaction("Sydney", "Kelly", 446.23);
+        bank.addCustomerTransaction("Adelaide", "Timmy", 1.34);
+        bank.listCustomers("Adelaide", true);
+        bank.listCustomers("Sydney", true);
+
+        if(!bank.addCustomer("Melbourne", "Brian", 5.33)){
+            System.out.println("Error Melbourne branch doesnt exist");
+        }
+        if(!bank.addBranch("Sydney")){
+            System.out.println("Error branch Sydney already exists");
+        }
+        if(!bank.addCustomerTransaction("Sydney", "Jamie", 34.55)){
+            System.out.println("Error customer does not exist at branch");
+        }
+        if(!bank.addCustomer("Sydney", "Mike", 5.33)){
+            System.out.println("Error Customer Mike already exist");
         }
     }
 
