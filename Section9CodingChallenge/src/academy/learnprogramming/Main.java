@@ -1,15 +1,26 @@
 package academy.learnprogramming;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
-    private static MobilePhone mobilePhone = new MobilePhone("000000000");
-
     private static ArrayList<Album> albums = new ArrayList<Album>();
     public static void main(String[] args) {
+        //interface challenge
+        Player jeff = new Player("jeff", 10, 15);
+        System.out.println(jeff.toString());
+        saveObject(jeff);
+        jeff.setHitPoints(8);
+        System.out.println(jeff);
+        jeff.setWeapon("Excalibur");
+        saveObject(jeff);
+        //loadObject(jeff);
+        System.out.println(jeff);
 
+        ISaveable werewolf = new Monster("Werewolf", 20, 40);
+        System.out.println("Strength = " + ((Monster) werewolf).getStrength());
+        saveObject(werewolf);
+
+        //inner class challenge
         Album album = new Album("The Ineffable Truth", "G Jones");
         album.addSong("Arbitor's Theme", 3.4);
         album.addSong("Time", 4.2);
@@ -31,74 +42,42 @@ public class Main {
         play(playList);
     }
 
-    private static void addNewContact() {
-        System.out.println("Enter new contact name: ");
-        String name = scanner.nextLine();
-        System.out.println("Enter phone number: ");
-        String phone = scanner.nextLine();
-        Contact newContact = Contact.createContact(name, phone);
-        if(mobilePhone.addNewContact(newContact)){
-            System.out.println("New contact added: " + name + ", phone = " + phone);
-        }else{
-            System.out.println("Cannot add, " + name  + " already on file");
+    public  static ArrayList<String> readValues() {
+        ArrayList<String> values = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+        int index = 0;
+        System.out.println("Choose \n1 to enter a string\n0 to quit");
+        while(!quit){
+            System.out.println("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice){
+                case 0:
+                    quit = true;
+                    break;
+                case 1:
+                    System.out.println("Enter a string: ");
+                    String stringInput = scanner.nextLine();
+                    values.add(index, stringInput);
+                    index++;
+                    break;
+            }
+        }
+        return values;
+    }
+
+    public static void saveObject(ISaveable objectToSave){
+        for(int i=0; i<objectToSave.write().size(); i++){
+            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
         }
     }
 
-    private  static  void updateContact(){
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if(existingContactRecord ==  null){
-            System.out.println("Contact not found");
-            return;
-        }
-        System.out.println("Enter new contact name: ");
-        String newName = scanner.nextLine();
-        System.out.println("Enter new contact phone number: ");
-        String newNumber = scanner.nextLine();
-        Contact newContact = Contact.createContact(newName, newNumber);
-        if(mobilePhone.updateContact(existingContactRecord, newContact)) {
-            System.out.println("Successfully updated record");
-        }else {
-            System.out.println("Error updating record");
-        }
+    public static void loadObject(ISaveable objectToLoad){
+        ArrayList<String> values = readValues();
+        objectToLoad.read(values);
     }
 
-    private  static  void removeContact() {
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if (existingContactRecord == null) {
-            System.out.println("Contact not found");
-            return;
-        }
-
-        if(mobilePhone.removeContact(existingContactRecord)){
-            System.out.printf("Successfully deleted");
-        }else {
-            System.out.println("Error deleting contact");
-        }
-    }
-
-    private  static  void queryContact() {
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if (existingContactRecord == null) {
-            System.out.println("Contact not found");
-            return;
-        }
-        System.out.println("Name " + existingContactRecord.getName() + " phone number is: " + existingContactRecord.getPhoneNumber());
-
-    }
-    private static void startPhone() {
-        System.out.println("Starting phone...");
-    }
-    private  static void printActions() {
-        System.out.println("\n Available actions:\npress");
-        System.out.println("0(shutdown), 1(print contacts), 2(add contact), 3(update contact), 4(remove contact), 5(search contact), 6(print list of actions)");
-        System.out.println("Choose your action: ");
-    }
 
     private static void play(LinkedList<Song> playList){
         Scanner scanner = new Scanner(System.in);
@@ -198,4 +177,6 @@ public class Main {
         }
         System.out.println("========");
     }
+
+
 }
