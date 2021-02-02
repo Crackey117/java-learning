@@ -40,6 +40,32 @@ public class Main {
         albums.get(1).addToPlayList(2, playList);
         albums.get(1).addToPlayList(12, playList);
         play(playList);
+
+        //abstract classes challenge
+        MyLinkedList list = new MyLinkedList(null);
+        list.traverse(list.getRoot());
+        String stringData = "5 8 2 5 9 2 0 1 4 6";
+        String[] data = stringData.split(" ");
+        for(String s : data){
+            list.addItem(new Node(s));
+        }
+        list.traverse(list.getRoot());
+
+        list.removeItem(new Node("6"));
+        list.removeItem(new Node("6"));
+        list.removeItem(new Node("5"));
+        list.removeItem(new Node("2"));
+        list.traverse(list.getRoot());
+
+        SearchTree tree = new SearchTree(null);
+        stringData = "5 8 2 5 9 2 0 1 4 6";
+        data = stringData.split(" ");
+        for(String s : data){
+            tree.addItem(new Node(s));
+            System.out.println(s + " added");
+        }
+        tree.traverse(tree.getRoot());
+
     }
 
     public  static ArrayList<String> readValues() {
