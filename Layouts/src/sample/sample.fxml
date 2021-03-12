@@ -36,6 +36,7 @@
     <!--<Button text="Cancel" prefWidth="90"/>-->
     <!--<Button text="Help" prefWidth="90"/>-->
 <!--</HBox>-->
+<!--
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <BorderPane fx:controller="sample.Controller"
@@ -45,6 +46,15 @@
                BorderPane.alignment="center"
         style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
     </top>
+    <left>
+        <Label text="This label is in the left position" alignment="center"/>
+    </left>
+    <center>
+        <Label text="This is in the center position and has really LONGGGGGGGGGGGGGGGGG text"/>
+    </center>
+    <right>
+        <Label text="This label is in the right position"/>
+    </right>
     <bottom>
     <HBox spacing="10" alignment="top_right">
         <padding>
@@ -55,4 +65,20 @@
         <Button text="Help" prefWidth="90"/>
     </HBox>
     </bottom>
-</BorderPane>
+</BorderPane>-->
+<?import javafx.scene.layout.FlowPane?>
+<FlowPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" orientation="HORIZONTAL">
+    <Button text="Button 1"/>
+    <Button text="Button 2"/>
+    <Button text="Button 3"/>
+    <Button text="Button 4"/>
+    <Button text="Button 5"/>
+    <Button text="Button 6"/>
+    <Button text="Button 7"/>
+    <Button text="Button 8"/>
+    <Button text="Button 9"/>
+    <Button text="Button 10"/>
+
+
+</FlowPane>
